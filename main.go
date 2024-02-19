@@ -2,46 +2,46 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"time"
 )
 
 func main() {
-	// Set log flags to include nanosecond timestamp
 	startSyncTime := time.Now()
 	// Synchronous or Sequential
-	log.Println("Asynce : Starting")
 	func() {
+		fmt.Println("Start : 1")
 		time.Sleep(1 * time.Second)
-		fmt.Println("1")
+		fmt.Println("End : 1")
 	}()
 	func() {
-		time.Sleep(1 * time.Second)
-		fmt.Println("2")
+		fmt.Println("Start : 2")
+		time.Sleep(2 * time.Second)
+		fmt.Println("End : 2")
 	}()
 	func() {
-		time.Sleep(1 * time.Second)
-		fmt.Println("3")
+		fmt.Println("Start : 3")
+		time.Sleep(4 * time.Second)
+		fmt.Println("End : 3")
 	}()
-	log.Println("Asynce : Finished")
 	fmt.Println("Total Run Time : ", time.Since(startSyncTime))
 	fmt.Println("================")
-	time.Sleep(1 * time.Second)
+	time.Sleep(2 * time.Second)
 	startAsyncTime := time.Now()
 	// Asynchronous
-	log.Println("Synce : Starting")
 	go func() {
+		fmt.Println("Start : A")
 		time.Sleep(1 * time.Second)
-		fmt.Println("A")
+		fmt.Println("End : A")
 	}()
 	go func() {
-		time.Sleep(1 * time.Second)
-		fmt.Println("B")
+		fmt.Println("Start : B")
+		time.Sleep(2 * time.Second)
+		fmt.Println("End : B")
 	}()
 	func() {
-		time.Sleep(1 * time.Second)
-		fmt.Println("C")
+		fmt.Println("Start : C")
+		time.Sleep(4 * time.Second)
+		fmt.Println("End : C")
 	}()
-	log.Println("Synce : Finished")
 	fmt.Println("Total Run Time : ", time.Since(startAsyncTime))
 }
