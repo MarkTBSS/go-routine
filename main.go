@@ -27,7 +27,7 @@ func main() {
 		fmt.Println("End : 3 = ", time.Since(start3))
 	}()
 	fmt.Println("Total Run Time : ", time.Since(startSyncTime))
-	fmt.Println("================")
+	fmt.Println("=================")
 	time.Sleep(2 * time.Second)
 	startAsyncTime := time.Now()
 	// Asynchronous
